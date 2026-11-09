@@ -12,9 +12,10 @@ export interface Employee {
   role: UserRole;
 }
 
-
-export interface StatCard{
-title:	string;
-value:	number;
-description:	string;
+export interface StatCard {
+  title: string;
+  value: number;
+  description: string;
 }
+
+

@@ -2,7 +2,8 @@ import Sidebar from "@/components/dashboard/Sidebar";
 import UserProfile from "@/components/dashboard/UserProfile";
 import EmployeeList from "@/components/dashboard/EmployeeList";
 import StatCard from "@/components/dashboard/StatCard";
-import type { User, Employee, StatCard} from "@/types/user";
+import StatsOverview from "@/components/dashboard/StatsOverview";
+import type { User, Employee, StatCard } from "@/types/user";
 
 const newUser: User = {
   id: 1,
@@ -19,11 +20,6 @@ const employees: Employee[] = [
   { id: 5, name: "David", role: "Manager" },
 ];
 
-// const card: StatCard = {
-//   title: "Total Employees",
-//   value: 125,
-//   description: "Currently registered employees",
-// };
 
 const cards: StatCard[] = [
   {
@@ -48,6 +44,12 @@ const cards: StatCard[] = [
   },
 ];
 
+const card: StatCard = {
+  title: "Single Card",
+  value: 1,
+  description: "Here is the description",
+};
+
 export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-slate-50">
@@ -58,8 +60,9 @@ export default function DashboardPage() {
           Welcome to WorkFlow360. Here's your overview.
         </p>
         <UserProfile user={newUser} />
-        <StatCard cards={cards} />
+        <StatCard card={card} />
         <EmployeeList employees={employees} />
+        <StatsOverview cards={cards} />
       </main>
     </div>
   );
