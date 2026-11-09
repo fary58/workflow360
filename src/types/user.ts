@@ -5,3 +5,9 @@ export interface User {
   email: string;
   role: UserRole;
 }
+
+export interface Employee {
+  name: string;
+  id: number;
+  role: UserRole;
+}

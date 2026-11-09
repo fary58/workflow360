@@ -1,11 +1,10 @@
-import React from "react";
 import type { User } from "@/types/user";
 interface UserProfileProps {
   user: User;
 }
 
 function UserProfile({ user }: UserProfileProps) {
-    return (
+  return (
     <div>
       <h1>Welcome, {user.name}!</h1>
       <p>Email: {user.email}</p>
