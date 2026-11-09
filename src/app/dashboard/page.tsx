@@ -13,13 +13,12 @@ const newUser: User = {
 };
 
 const employees: Employee[] = [
-  { id: 1, name: "Farrukh", role: "Manager" },
-  { id: 2, name: "Ahmed", role: "Employee" },
-  { id: 3, name: "John", role: "Admin" },
-  { id: 4, name: "Ali", role: "Employee" },
-  { id: 5, name: "David", role: "Manager" },
+  { id: 1, name: "Farrukh", role: "Manager", email: "Farrukhgmail.com" },
+  { id: 2, name: "Ahmed", role: "Employee", email: "Ahmed@gmail.com" },
+  { id: 3, name: "John", role: "Admin", email: "john@gmail.com" },
+  { id: 4, name: "Ali", role: "Employee", email: "ali@gmail.com" },
+  { id: 5, name: "David", role: "Manager", email: "david@gmail.com" },
 ];
-
 
 const cards: StatCard[] = [
   {
