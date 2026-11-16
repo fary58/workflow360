@@ -10,6 +10,9 @@ interface EmployeeListProps {
 function EmployeeList({ employees }: EmployeeListProps) {
   const [search, setSearch] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [role, setRole] = useState<"all" | "admin" | "manager" | "employee">(
+    "all",
+  );
 
   const filteredEmployees = employees.filter((employee) => {
     const query = search.toLowerCase();
@@ -19,7 +22,14 @@ function EmployeeList({ employees }: EmployeeListProps) {
       employee.email.toLowerCase().includes(query)
     );
   });
-  const sortedEmployees = [...filteredEmployees].sort((a, b) => {
+
+  const roleFilteredEmployees = filteredEmployees.filter((employee) => {
+    if (role === "all") return true;
+
+    return employee.role.toLowerCase() === role;
+  });
+
+  const sortedEmployees = [...roleFilteredEmployees].sort((a, b) => {
     const comparison = a.name.localeCompare(b.name);
     return sortOrder === "asc" ? comparison : -comparison;
   });
@@ -36,10 +46,24 @@ function EmployeeList({ employees }: EmployeeListProps) {
           placeholder="Search employees by name or email..."
         />
       </div>
-      <select   onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
- value={sortOrder}>
+      <select
+        onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+        value={sortOrder}
+      >
         <option value="asc">A–Z</option>
         <option value="desc">Z–A</option>
+      </select>
+
+      <select
+        onChange={(e) =>
+          setRole(e.target.value as "all" | "admin" | "manager" | "employee")
+        }
+        value={role}
+      >
+        <option value="all">All</option>
+        <option value="admin">Admin</option>
+        <option value="manager">Manager</option>
+        <option value="employee">Employee</option>
       </select>
 
       {/* Employee List */}
