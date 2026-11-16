@@ -9,6 +9,7 @@ interface EmployeeListProps {
 
 function EmployeeList({ employees }: EmployeeListProps) {
   const [search, setSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const filteredEmployees = employees.filter((employee) => {
     const query = search.toLowerCase();
@@ -17,6 +18,10 @@ function EmployeeList({ employees }: EmployeeListProps) {
       employee.name.toLowerCase().includes(query) ||
       employee.email.toLowerCase().includes(query)
     );
+  });
+  const sortedEmployees = [...filteredEmployees].sort((a, b) => {
+    const comparison = a.name.localeCompare(b.name);
+    return sortOrder === "asc" ? comparison : -comparison;
   });
 
   return (
@@ -31,11 +36,16 @@ function EmployeeList({ employees }: EmployeeListProps) {
           placeholder="Search employees by name or email..."
         />
       </div>
+      <select   onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+ value={sortOrder}>
+        <option value="asc">A–Z</option>
+        <option value="desc">Z–A</option>
+      </select>
 
       {/* Employee List */}
-      {filteredEmployees.length > 0 ? (
+      {sortedEmployees.length > 0 ? (
         <div className="space-y-3">
-          {filteredEmployees.map((employee) => (
+          {sortedEmployees.map((employee) => (
             <div
               key={employee.id}
               className="p-3 bg-white border border-gray-200 rounded-lg"
