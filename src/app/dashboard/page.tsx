@@ -17,7 +17,10 @@ const employees: Employee[] = [
   { id: 2, name: "Ahmed", role: "Employee", email: "Ahmed@gmail.com" },
   { id: 3, name: "John", role: "Admin", email: "john@gmail.com" },
   { id: 4, name: "Ali", role: "Employee", email: "ali@gmail.com" },
-  { id: 5, name: "David", role: "Manager", email: "david@gmail.com" },
+  { id: 5, name: "David", role: "Employee", email: "david@gmail.com" },
+  { id: 6, name: "Mark", role: "Employee", email: "david@gmail.com" },
+  { id: 7, name: "Samuel", role: "Employee", email: "david@gmail.com" },
+  { id: 8, name: "Eden", role: "Admin", email: "david@gmail.com" },
 ];
 
 const cards: StatCard[] = [
